@@ -1,1 +1,17 @@
-<p>landing works!</p>
+<app-header></app-header>
+<div class="container-fluid vh-100">
+  <div class="row h-100">
+    <!-- Side Panel -->
+    <!-- <div class="col-3 bg-light border-end p-3">
+      <app-side-panel (itemSelected)="onItemSelected($event)"></app-side-panel>
+    </div> -->
+
+    <!-- Main Content -->
+    <!-- <div class="col-9 p-3">
+      <app-main-content [selectedItem]="selectedItem"></app-main-content>
+    </div> -->
+    <app-client-dashboard></app-client-dashboard>
+    <app-project-dashboard></app-project-dashboard>
+  </div>
+</div>
+

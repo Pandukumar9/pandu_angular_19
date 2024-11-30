@@ -57,3 +57,8 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+while create project add project name,industry,
+next knowledge source checkbox chatgpt
+scope and activity here two options 1.entreprise platfomr transformmationn=>salesforce and ade checkbox

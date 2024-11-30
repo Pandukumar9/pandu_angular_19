@@ -1,0 +1,122 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar (Left Panel) -->
+    <div class="col-3 bg-light border-end p-3">
+      <div class="mb-4">
+        <h4 class="text-center">Welcome, {{ username }}</h4>
+      </div>
+
+      <!-- Search Client -->
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search Clients"
+          [(ngModel)]="searchQuery"
+        />
+      </div>
+
+      <!-- Sidebar Menu (Tabs) -->
+      <div class="list-group">
+        <button
+          class="list-group-item list-group-item-action"
+          (click)="selectTab('recent')"
+        >
+          Recent Projects
+        </button>
+        <button
+          class="list-group-item list-group-item-action"
+          (click)="selectTab('all')"
+        >
+          All Projects
+        </button>
+        <button
+          class="list-group-item list-group-item-action"
+          (click)="selectTab('favorites')"
+        >
+          Favorites
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content (Right Panel) -->
+    <div class="col-9 p-3">
+      <!-- Client Table or Details -->
+      <div *ngIf="selectedTab === 'recent'">
+        <h3>Recent Projects</h3>
+        <div *ngIf="recentClients.length === 0">No recent Projects found.</div>
+        <div *ngFor="let client of recentClients">
+          <div class="client-card" (click)="selectClient(client)">
+            <h5>{{ client.name }}</h5>
+            <p>{{ client.email }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="selectedTab === 'all'">
+        <h3>All Projects</h3>
+        <div *ngIf="allClients.length === 0">No Projects found.</div>
+        <div *ngFor="let client of allClients">
+          <div class="client-card" (click)="selectClient(client)">
+            <h5>{{ client.name }}</h5>
+            <p>{{ client.email }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="selectedTab === 'favorites'">
+        <h3>Favorite Projects</h3>
+        <div *ngIf="favoritesClients.length === 0">No favorite Projects.</div>
+        <div *ngFor="let client of favoritesClients">
+          <div class="client-card" (click)="selectClient(client)">
+            <h5>{{ client.name }}</h5>
+            <p>{{ client.email }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Create New Client Form -->
+      <div class="my-4">
+        <h4>Create New Project</h4>
+        <form (ngSubmit)="createClient()">
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="newClient.name"
+              name="name"
+              placeholder="Client Name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="email"
+              class="form-control"
+              [(ngModel)]="newClient.email"
+              name="email"
+              placeholder="Client Email"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Create Project</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Selected Client Projects -->
+      <div *ngIf="selectedClient">
+        <h3>{{ selectedClient.name }} Projects</h3>
+        <div *ngIf="selectedClient.projects?.length === 0">
+          No projects available for this client.
+        </div>
+        <ul>
+          <li *ngFor="let project of selectedClient.projects">
+            {{ project.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

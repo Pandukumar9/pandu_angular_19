@@ -1,0 +1,79 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <h3 class="text-center mb-4">Register</h3>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <!-- Name Field -->
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                formControlName="name"
+                [ngClass]="{ 'is-invalid': isFieldInvalid('name') }"
+              />
+              <div class="invalid-feedback" *ngIf="isFieldInvalid('name')">
+                Name is required.
+              </div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                formControlName="email"
+                [ngClass]="{ 'is-invalid': isFieldInvalid('email') }"
+              />
+              <div class="invalid-feedback" *ngIf="isFieldInvalid('email')">
+                Email is required and must be valid.
+              </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                formControlName="password"
+                [ngClass]="{ 'is-invalid': isFieldInvalid('password') }"
+              />
+              <div class="invalid-feedback" *ngIf="isFieldInvalid('password')">
+                Password is required (min 6 characters).
+              </div>
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirm Password</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                class="form-control"
+                formControlName="confirmPassword"
+                [ngClass]="{ 'is-invalid': isFieldInvalid('confirmPassword') }"
+              />
+              <div class="invalid-feedback" *ngIf="isFieldInvalid('confirmPassword')">
+                Confirm Password must match the Password.
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid">
+              <button class="btn btn-primary" type="submit" [disabled]="registerForm.invalid">
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
